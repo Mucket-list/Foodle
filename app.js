@@ -12,8 +12,8 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
 //mongoose.connect('mongodb://localhost/loginapp');
-//mongoose.connect('mongodb://slee:comp307project@#!@ds247678.mlab.com:47678/foodle')
-mongoose.connect("mongodb://slee:1q2w3e4r!@ds157923.mlab.com:57923/yelpcar")
+mongoose.connect('mongodb://mucketlist:mucketlist2gg***@ds247678.mlab.com:47678/foodle')
+//mongoose.connect("mongodb://slee:1q2w3e4r!@ds157923.mlab.com:57923/yelpcar")
 var db = mongoose.connection;
 
 var routes = require('./routes/index');
