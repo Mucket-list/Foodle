@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../stylesheets/foodleMainStyleSheet.css"/>
+
+
+	<style>
+		.checked {color:#ff6961}
+		.carousel-inner img {
+			width: 100%;
+			height:200px;
+			object-fit:cover;
+		}
+	</style>
+
+
+
+
+	<title>SampleProfilePage</title>
+
+
+</head>
+
+
+
+<body class="themeRed4">
+
+	<div id="fixed">
+	</div>
+
+	<div class="top-bar-restaurant themePink1">
+		<a href="/" onclick="" class="top-bar-home hover-text-themeRed7 text-24 text-white text-unlined">
+			Foodle
+		</a>
+	</div>
+
+	</br>
+
+	<div class="white main-restaurant">
+		<div class="display-window border-themeRed5">
+			<img src="../images/defaultProfile.png" class="rounded-circle mx-auto d-block" width="20%">
+			<p class="logo-superBig text-themeRed5"><%= currentUser.firstname %> <%= currentUser.lastname %></p>
+		</div>
+	</div>
+
+	<div class="themeRed3" style="margin-top:35%">
+		</br>
+		<p class="logo-superBig text-themePink1">
+			<%= currentUser.firstname %>'s List
+		</p>
+		</br>
+	</div>
+
+
+	<!--For each restaurant, this will exist----------->
+	<div class="profile-restaurant themeGray1">
+
+		<div id="bannerCarousel" class="carousel slide" data-ride="carousel" style="width:300px;float:right;object-fit:cover">
+			<ul class="carousel-indicators">
+				<li data-target="#bannerCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#bannerCarousel" data-slide-to="1"></li>
+				<li data-target="#bannerCarousel" data-slide-to="2"></li>
+			</ul>
+
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="cest_si_bon.jpg" alt="photo1">
+				</div>
+				<div class="carousel-item">
+					<img src="cest_si_bon.jpg" alt="photo2">
+				</div>
+				<div class="carousel-item">
+					<img src="cest_si_bon.jpg" alt="photo3">
+				</div>
+			</div>
+
+			<a class="carousel-control-prev" href="#bannerCarousel" data-slide="prev">
+				<span class="carousel-control-prev-icon"></span>
+			</a>
+
+			<a class="carousel-control-next" href="#bannerCarousel" data-slide="next">
+				<span class="carousel-control-next-icon"></span>
+			</a>
+		</div>
+
+
+		<div class="text-36 text-bold">
+			John's home
+		</div>
+		<div class="text-24">
+			3475 Rue Durocher, Montreal, QC, Canada
+		</div>
+		<div class="text-16">
+			This is John's house. It serves nothing but hatred and horror.</br>
+			Visitors say it's a very disturbing house of coding terror.</br>
+			Bring your own computer.
+		</div>
+		</br>
+
+		<a href="#" class="tag-button themePink1 hover-themeRed1 text-white">
+			See More
+		</a>
+
+	</div>
+
+	<!--For each restaurant, this will exist----------->
+	<div class="profile-restaurant themeGray1">
+
+		<div id="bannerCarousel" class="carousel slide" data-ride="carousel" style="width:300px;float:right;object-fit:cover">
+			<ul class="carousel-indicators">
+				<li data-target="#bannerCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#bannerCarousel" data-slide-to="1"></li>
+				<li data-target="#bannerCarousel" data-slide-to="2"></li>
+			</ul>
+
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="cest_si_bon.jpg" alt="photo1">
+				</div>
+				<div class="carousel-item">
+					<img src="cest_si_bon.jpg" alt="photo2">
+				</div>
+				<div class="carousel-item">
+					<img src="cest_si_bon.jpg" alt="photo3">
+				</div>
+			</div>
+
+			<a class="carousel-control-prev" href="#bannerCarousel" data-slide="prev">
+				<span class="carousel-control-prev-icon"></span>
+			</a>
+
+			<a class="carousel-control-next" href="#bannerCarousel" data-slide="next">
+				<span class="carousel-control-next-icon"></span>
+			</a>
+		</div>
+
+
+		<div class="text-36 text-bold">
+			Boo's home
+		</div>
+		<div class="text-24">
+			3475 Rue Durocher, Montreal, QC, Canada
+		</div>
+		<div class="text-16">
+			This is John's house. It serves nothing but hatred and horror.</br>
+			Visitors say it's a very disturbing house of coding terror.</br>
+			Bring your own computer.
+		</div>
+		</br>
+
+		<a href="#" class="tag-button themePink1 hover-themeRed1 text-white">
+			See More
+		</a>
+	</div>
+
+
+	<!--Bottom Bar---------------------------------------------------------------------------------------->
+	<div class="bottom-bar-long themeRed5" style="padding:20px">
+
+		<div class="fluid">
+			<div class="row">
+
+				<div class="col-lg-1">
+
+				</div>
+
+				<div class="col-lg-4">
+
+					<div class="text-white display-window themeRed4" style="padding:20px;font-size:20px">
+						Don't see your favorite restaurant on website?</br>
+						Please send us a suggestion, and we will add your favorite restaurant ASAP!</br>
+					</div>
+					</br>
+
+					<form id="suggestionSender" method="POST" action="profile">
+						<div class="text-white"> Your Name </div><input type="text" name="name" style="width:50%"></br>
+						<div class="text-white"> Restaurant Name </div><input type="text" name="restaurant" style="width:50%"></br>
+						<div class="text-white"> Restaurant Address </div><input type="text" name="address" style="width:80%"></br>
+						<div class="text-white"> Extra information </div><textarea type="text" rows="5" name="extra" style="width:80%"></textarea></br>
+						<input type="submit" name="Submit" class="btn themeRed4 hover-themePink1">
+					</form>
+
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+<script>
+
+	$(document).ready(function(){
+		$(window).scroll( function(){
+
+			/* Check the location of each desired element */
+			$('.profile-restaurant').each( function(i){
+				var trigger_point = $(this).offset().top + $(this).outerHeight()/2;
+				var top_of_window = $(window).scrollTop();
+				var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+
+				if( bottom_of_window > trigger_point && trigger_point > top_of_window ){
+
+					$(this).animate({'opacity':'1'},1000);
+
+				}
+
+
+
+
+			});
+
+		});
+    });
+
+
+
+</script>
+
+
+
+
+
+</html>
