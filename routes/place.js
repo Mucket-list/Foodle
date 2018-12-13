@@ -30,7 +30,7 @@ router.post('/', middleware.checkPlaceOwnership, function(req, res) {
 
 										foundUser.savedPlaces.push(place);
 										foundUser.save();
-										res.redirect("/");
+										res.redirect("back");
 								}
 						});
 				}

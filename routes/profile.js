@@ -10,7 +10,7 @@ var middleware      = require("../middleware/middleware")
 // });
 
 //show profile of the user
-router.get("/", function(req, res){
+router.get("/",middleware.ensureAuthenticated, function(req, res){
     //find username with provided id
     console.log(res.locals.user);
     User.findById(res.locals.user._id, function(err, foundUser){
@@ -45,15 +45,11 @@ router.post("/", middleware.ensureAuthenticated, function(req, res) {
         // host: 'mail.YOURDOMAIN.com',
         // port: 587,
         // secure: false, // true for 465, false for other ports
-        service: 'smtp-mail.outlook.com',
-        port: 587,
-        secureConnection: false,
-        tls: {
-          ciphers: "SSLv3"
-        },
+        secure: true,
+        service: 'Gmail',
         auth: {
-            user: "sang.m.lee@mail.mcgill.ca", // generated ethereal user
-            pass: 'dltkdals1994'  // generated ethereal password
+            user: "foodle307Pro@gmail.com", // generated ethereal user
+            pass: "Comp307@#!"  // generated ethereal password
         }
         // tls:{
         //   rejectUnauthorized:false
@@ -62,8 +58,8 @@ router.post("/", middleware.ensureAuthenticated, function(req, res) {
 
     // setup email data with unicode symbols
     let mailOptions = {
-        from: 'sang.m.lee@mail.mcgill.ca', // sender address
-        to: 'kingdog6694@gmail.com', // list of receivers
+        from: res.locals.user.email, // sender address
+        to: 'sang.m.lee@mail.mcgill.ca', // list of receivers
         subject: 'Node Contact Request', // Subject line
         text: 'You have a new location request', // plain text body
         html: output // html body
@@ -73,8 +69,8 @@ router.post("/", middleware.ensureAuthenticated, function(req, res) {
     transporter.sendMail(mailOptions, function(err) {
         if(err)
             throw err;
-        console.log("error sent")
-        res.render("profiles/profile");
+        console.log("email sent")
+        res.redirect("back");
   });
 });
 

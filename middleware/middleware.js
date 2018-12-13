@@ -15,14 +15,14 @@ middleObj.checkPlaceOwnership = function(req, res, next) {
             else {
                 for(var i = 0; i < currentUser.savedPlaces.length; i++) {
                     if(currentUser.savedPlaces[i] == req.params.id) {
-                        res.redirect("back");
+                        res.redirect("/.");
                     }
                 }
                 next();
             }
         })
     } else {
-        res.redirect("back");
+        res.redirect("/.");
     }
 }
 
@@ -32,7 +32,7 @@ middleObj.ensureAuthenticated = function(req, res, next){
 	if(req.isAuthenticated()){
 		return next();
 	} else {
-		//req.flash('error_msg','You are not logged in');
+		req.flash('error_msg','You are not logged in');
 		res.redirect('/login');
 	}
 }
