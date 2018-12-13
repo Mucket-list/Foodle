@@ -4,15 +4,16 @@ var Place = require('../models/place');
 
 // Get Homepage
 router.get('/', function(req, res){
-	Place.find({type: "restaurant"}, function(err, allRestaurants) {
+	Place.find({type: "restaurant"}).sort({'saved': -1}).exec(function(err, allRestaurants) {
 			if(err) throw err;
 			else {
-					Place.find({type: "cafe"}, function(err, allCafes) {
+					Place.find({type: "cafe"}).sort({'saved': -1}).exec(function(err, allCafes) {
 							if(err) throw err;
 							else {
-									Place.find({type: "bar"}, function(err, allBars) {
+									Place.find({type: "bar"}).sort({'saved': -1}).exec(function(err, allBars) {
 											if(err) throw err
 											else {
+
 													res.render('index', {
 														currentUser: res.locals.user,
 														placeid: "5c0ee49fb734739ff0d1b212",
