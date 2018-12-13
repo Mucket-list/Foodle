@@ -112,7 +112,7 @@ router.post('/reset', function(req, res) {
 		const output = `
 			<p>Password Reset Form</p>
 			<h3>Click the link below to reset your password</h3>
-			<a href="https://pacific-refuge-27092.herokuapp.com">reset your password</a>
+			<a href="https://pacific-refuge-27092.herokuapp.com/reset/password">reset your password</a>
 		`;
 
 			// create reusable transporter object using the default SMTP transport
