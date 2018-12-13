@@ -17,7 +17,11 @@ var mongoose = require("mongoose");
 var placeSchema = new mongoose.Schema({
     name: String,
     type: String,
-    location: String,
+    location: {
+        type: String,
+        unique: true,
+        required: true
+    },
     gps: String,
     description: String,
     saved: {
