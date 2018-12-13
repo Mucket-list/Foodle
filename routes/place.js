@@ -38,6 +38,38 @@ router.post('/', middleware.checkPlaceOwnership, function(req, res) {
 });
 
 
+// remove restaurant from favorites
+router.post("/delete", middleware.ensureAuthenticated, function(req, res) {
+		User.findById(res.locals.user.id, function(err, currentUser) {
+				if(err) throw err;
+				else {
+						var places = currentUser.savedPlaces;
+						for(var i = 0; i < places.length; i++) {
+								if(places[i] == req.params.id) {
+										places.splice(i, 1);
+										break;
+								}
+						}
+
+						Place.findById(req.params.id, function(err, place) {
+								if(err) throw err;
+								else {
+										var saves = place.saved - 1;
+										var newValue = {$set: {saved: saves}};
+										Place.findByIdAndUpdate(place._id, newValue, function(err) {
+												if(err) throw err;
+										});
+
+										// currentUser.savedPlaces.push(places);
+										currentUser.save();
+										res.redirect("back");
+								}
+						});
+				}
+		})
+});
+
+
 
 
 module.exports = router;

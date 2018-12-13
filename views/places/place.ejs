@@ -104,13 +104,18 @@
     <% var alreadySaved = false; %>
     <% if(currentUser){ %>
       <% for(var i = 0; i < currentUser.savedPlaces.length; i++){ %>
-        <% if(currentUser.savedPlaces[i] == foundPlace._id) %>
+        <% if(String(currentUser.savedPlaces[i]) == String(foundPlace._id)) { %>
           <% alreadySaved = true; %>
           <% break; %>
         <% } %>
-        <% if(!alreadySaved) { %>
+        <% } %>
+        <% if(alreadySaved == false) { %>
           <form method="POST" action="/place/<%= foundPlace._id %>">
             <button class="btn themePink1 text-white">Add to MyList!</button>
+          </form>
+        <% } else { %>
+          <form method="POST" action="/place/<%= foundPlace._id %>/delete">
+            <button class="btn themePink1 text-white">Delete from MyList :(</button>
           </form>
         <% } %>
     <% } %>
