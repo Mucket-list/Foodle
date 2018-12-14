@@ -7,6 +7,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="/js/fadeout.js"></script>
 	<link rel="stylesheet" href="../stylesheets/foodleMainStyleSheet.css"/>
 
 
@@ -30,6 +31,7 @@
 	<div id="fixed">
 	</div>
 
+
 	<div class="top-bar-restaurant themePink1">
     <% if(!currentUser){ %>
   		<a href="/login" onclick="" class="top-bar-content hover-text-themeRed7 text-24 text-white text-unlined">
@@ -50,6 +52,19 @@
 	</div>
 
 	</br>
+  <div class="container">
+    <div id="flasher">
+      <% if(success_msg && success_msg.length > 0){ %>
+        <div class="alert alert-success" rold="alert">
+            <%= success_msg %>
+        </div>
+      <% } else if(error_msg && error_msg.length > 0){ %>
+        <div class="alert alert-danger" rold="alert">
+            <%= error_msg %>
+        </div>
+      <% } %>
+    </div>
+  </div>
 
 	<div class="white main-restaurant">
 		<div class="display-window border-themeRed5">
@@ -109,7 +124,7 @@
   	</div>
   <% }); %>
 
-		<!--Bottom Bar---------------------------------------------------------------------------------------->
+  <!--Bottom Bar---------------------------------------------------------------------------------------->
 	<div class="bottom-bar-long themeRed5" style="padding:20px">
 
 		<div class="fluid">
@@ -127,11 +142,11 @@
 					</div>
 					</br>
 
-					<form id="suggestionSender" method="get">
-						<div class="text-white"> Your Name </div><input type="text" name="Email" style="width:50%"></br>
-						<div class="text-white"> Restaurant Name </div><input type="text" name="Restaurant" style="width:50%"></br>
-						<div class="text-white"> Restaurant Address </div><input type="text" name="Address" style="width:80%"></br>
-						<div class="text-white"> Extra information </div><textarea type="text" rows="5" name="Extra" style="width:80%"></textarea></br>
+					<form id="suggestionSender" method="POST" action="/category">
+						<div class="text-white"> Your Name </div><input type="text" name="name" style="width:50%"></br>
+						<div class="text-white"> Restaurant Name </div><input type="text" name="restaurant" style="width:50%"></br>
+						<div class="text-white"> Restaurant Address </div><input type="text" name="address" style="width:80%"></br>
+						<div class="text-white"> Extra information </div><textarea type="text" rows="5" name="extra" style="width:80%"></textarea></br>
 						<input type="submit" name="Submit" class="btn themeRed4 hover-themePink1">
 					</form>
 

@@ -14,7 +14,7 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
 //mongoose.connect('mongodb://localhost/loginapp');
-mongoose.connect('mongodb://mucketlist:mucketlist2gg***@ds247678.mlab.com:47678/foodle')
+mongoose.connect('mongodb://mucketlist:' + process.env.MONGODB_PW + '@ds247678.mlab.com:47678/foodle');
 //mongoose.connect("mongodb://slee:1q2w3e4r!@ds157923.mlab.com:57923/yelpcar")
 var db = mongoose.connection;
 

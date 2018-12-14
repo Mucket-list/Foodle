@@ -25,6 +25,10 @@
         <div class="alert alert-success" rold="alert">
             <%= success_msg %>
         </div>
+      <% } else if(error_msg && error_msg.length > 0){ %>
+        <div class="alert alert-danger" rold="alert">
+            <%= error_msg %>
+        </div>
       <% } %>
     </div>
   </div>

@@ -144,14 +144,13 @@ router.post('/reset', function(req, res) {
 						});
 				},
 				function(token, user, done) {
-						console.log(req.headers.host);
 						// create reusable transporter object using the default SMTP transport
 						let transporter = nodemailer.createTransport({
 								secure: true,
 								service: 'Gmail',
 								auth: {
 										user: "foodle307Pro@gmail.com", // generated ethereal user
-										pass: "Comp307@#!"  // generated ethereal password
+										pass: process.env.NODEMAILER_PW  // generated ethereal password
 								}
 						});
 						// setup email data with unicode symbols
@@ -166,8 +165,9 @@ router.post('/reset', function(req, res) {
 						};
 						// send mail with defined transport object
 						transporter.sendMail(mailOptions, function(err) {
-								if(err)
-										throw err;
+								if(err) {
+										req.flash("error_msg", "Failed to send an email; please try again")
+								}
 								req.flash("success_msg", "Password reset email successfully sent to " + user.email);
 								res.redirect("/");
 						});
