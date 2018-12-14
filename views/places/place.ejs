@@ -233,7 +233,9 @@
 	function myMap(){
 
     var location = "<%= foundPlace.gps %>".split(", ");
-    console.log(location);
+    var lat = parseFloat(location[0]);
+    var lng = parseFloat(location[1]);
+    conole.log(lat + " " + lng);
 
     var buildingLatlng = new google.maps.LatLng(45.501968, -73.577000);
     var centerLatlng   = new google.maps.LatLng(45.501968, -73.577000);
