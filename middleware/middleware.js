@@ -16,48 +16,16 @@ middleObj.checkPlaceOwnership = function(req, res, next) {
             else {
                 for(var i = 0; i < currentUser.savedPlaces.length; i++) {
                     if(currentUser.savedPlaces[i] == req.params.id) {
-                        res.redirect("/.");
+                        res.redirect("/");
                     }
                 }
                 next();
             }
         })
     } else {
-        res.redirect("/.");
+        res.redirect("/");
     }
 }
-
-
-// middleObj.alreadyRated = function(req, res, next) {
-//     if(req.isAuthenticated()) {
-//         Rate.findOne({ byUser: res.locals.user.id }, function(err, userRate) {
-//             if(err) {
-//                 throw err;
-//             }
-//             else {
-//                 console.log(userRate);
-//                 Place.findById(req.params.id, function(err, currentPlace) {
-//                     if(err) {
-//                         throw err;
-//                         res.redirect("back");
-//                     } else {
-//                         for(var i = 0; i < currentPlace.ratings.length; i++) {
-//                           console.log(userRate.id);
-//                           console.log(currentPlace.ratings[i]);
-//                             if(currentPlace.ratings[i] == userRate.id) {
-//
-//                                 res.redirect("/");
-//                             }
-//                         }
-//                         next();
-//                     }
-//                 })
-//             }
-//         })
-//     } else {
-//         res.redirect("/.");
-//     }
-// }
 
 
 //checks login status
