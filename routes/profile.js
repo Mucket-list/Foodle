@@ -2,22 +2,29 @@ var express         = require("express");
 var router          = express.Router();
 var User            = require("../models/user");
 var nodemailer      = require('nodemailer');
-var middleware      = require("../middleware/middleware")
-
-//set global variable currentUser
-// router.use(function (req, res) {
-//   res.locals.user = req.user || null;
-// });
+var middleware      = require("../middleware/middleware");
+var Place           = require("../models/place");
 
 //show profile of the user
 router.get("/",middleware.ensureAuthenticated, function(req, res){
     //find username with provided id
-    console.log(res.locals.user);
     User.findById(res.locals.user._id, function(err, foundUser){
         if(err){
             console.log(err);
         }
         else {
+            var mukList = [];
+            var currentSaved = foundUser.savedPlaces;
+            currentSaved.forEach(function(placeid){
+                Place.findById(placeid, function(err, foundPlace) {
+                    if(err) throw err;
+                    else {
+                        mukList.push(foundPlace);
+                    }
+                });
+            });
+            console.log(foundPlace);
+
             //render show tamplate with that user id
             //with foundUser as user parameter
             res.render("profiles/profile", {currentUser: res.locals.user});
@@ -42,9 +49,6 @@ router.post("/", middleware.ensureAuthenticated, function(req, res) {
 
       // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-        // host: 'mail.YOURDOMAIN.com',
-        // port: 587,
-        // secure: false, // true for 465, false for other ports
         secure: true,
         service: 'Gmail',
         auth: {

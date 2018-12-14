@@ -87,7 +87,7 @@ app.use('/profile', profiles);
 app.use('/place/:id', places);
 app.use('/category', categories);
 
-//Set Port
+// Set Port
 // app.set('port', (process.env.PORT || 3000));
 //
 // app.listen(app.get('port'), function(){
