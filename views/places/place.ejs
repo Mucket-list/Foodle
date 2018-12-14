@@ -117,6 +117,15 @@
           <form method="POST" action="/place/<%= foundPlace._id %>/delete">
             <button class="btn themePink1 text-white">Delete from MyList :(</button>
           </form>
+
+          <p class="text-themePink1 text-24"style="margin-top:30px">Your Rating:</p>
+      		<div class="slidecontainer">
+      			<div id="rating" class="text-themePink1 text-24"></div>
+      			<form id="rater" method="POST" action="/place/<%= foundPlace._id %>/rate">
+      				<input name="rate[rate]" oninput="displayRating(value)" type="range" min="0" max="5" class="slider" id="myRange" style="margin-bottom:20px">
+      				<input type="submit" class="tag-button themePink1 hover-themeRed1 text-white">
+      			</form>
+      		</div>
         <% } %>
     <% } %>
 
@@ -142,7 +151,7 @@
 
 		<div class="fluid row">
 			<div class="col-lg-7 display-window themeGray3 text-24">
-				DESCRIPTION HERE</br>
+				DESCRIPTION: </br></br>
 				<%= foundPlace.description %>
 			</div>
 
@@ -210,9 +219,16 @@
 
 <script>
 
+  function displayRating(x){
+    var place = document.getElementById("rating");
+    place.innerHTML = x;
+  }
+
+
 	function Star(){
 		//get star rating from server here
-		var rating = 4;
+		var ratingS = "<%= rateAvg %>";
+    var rating = parseFloat(ratingS);
 
 		var star1 = document.getElementById("star1");
 		var star2 = document.getElementById("star2");
@@ -255,7 +271,6 @@
                                                     title:"<%= foundPlace.name %>"
                                                     });
 	}
-
 
 
 

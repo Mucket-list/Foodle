@@ -1,18 +1,5 @@
 var mongoose = require("mongoose");
 
-/*
-    idplace
-    name
-    type
-    location
-    gps
-    description
-    saved
-    picsurl
-    picsurl2
-    picsurl3
-*/
-
 //SCHEMA SETUP
 var placeSchema = new mongoose.Schema({
     name: String,
@@ -27,6 +14,12 @@ var placeSchema = new mongoose.Schema({
     saved: {
       type: Number
     },
+    ratings: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Rate"
+        }
+    ],
     picurl1: String,
     picurl2: String,
     picurl3: String

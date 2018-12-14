@@ -36,6 +36,11 @@
 	</div>
 
 	<div class="top-bar-restaurant themePink1">
+    <% if(currentUser) { %>
+      <a href="/logout" onclick="" class="top-bar-content hover-text-themeRed7 text-24 text-white text-unlined">
+          Log Out
+      </a>
+    <% } %>
 		<a href="/" onclick="" class="top-bar-home hover-text-themeRed7 text-24 text-white text-unlined">
 			Foodle
 		</a>

@@ -53,8 +53,8 @@
 
 	<div class="white main-restaurant">
 		<div class="display-window border-themeRed5">
-			<img src="images/defaultProfile.png" class="rounded-circle mx-auto d-block" width="10%" style="float:right">
-			<img src="images/defaultProfile.png" class="rounded-circle mx-auto d-block" width="10%" style="float:left">
+			<img src="../images/defaultProfile.png" class="rounded-circle mx-auto d-block" width="10%" style="float:right">
+			<img src="../images/defaultProfile.png" class="rounded-circle mx-auto d-block" width="10%" style="float:left">
 			<p class="logo-superBig text-themePink1">Category</p>
 		</div>
 	</div>
@@ -68,15 +68,14 @@
 	</div>
 
 
-  <% var i = 1; %>
   <% allPlaces.forEach(function(place) { %>
   	<div class="profile-restaurant themeGray1">
 
   		<div id="bannerCarousel" class="carousel slide" data-ride="carousel" style="width:300px;float:right;object-fit:cover">
   			<ul class="carousel-indicators">
-  				<li data-target="#bannerCarousel" data-slide-to="0" class="active"></li>
-  				<li data-target="#bannerCarousel" data-slide-to="1"></li>
-  				<li data-target="#bannerCarousel" data-slide-to="2"></li>
+  				<li data-target="#bannerCarousel" class="active"></li>
+  				<li data-target="#bannerCarousel" ></li>
+  				<li data-target="#bannerCarousel" ></li>
   			</ul>
 
   			<div class="carousel-inner">
@@ -91,19 +90,9 @@
   				</div>
   			</div>
 
-  			<a class="carousel-control-prev" href="#bannerCarousel" data-slide="prev">
-  				<span class="carousel-control-prev-icon"></span>
-  			</a>
 
-  			<a class="carousel-control-next" href="#bannerCarousel" data-slide="next">
-  				<span class="carousel-control-next-icon"></span>
-  			</a>
   		</div>
 
-
-  		<div class="logo-superBig text-themePink1">
-        <%= i %>
-  		</div>
   		<div class="text-36 text-bold">
   			<%= place.name %>
   		</div>
@@ -118,7 +107,6 @@
 
 
   	</div>
-  <% i++; %>
   <% }); %>
 
 		<!--Bottom Bar---------------------------------------------------------------------------------------->

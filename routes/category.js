@@ -11,7 +11,8 @@ router.get("/:type", function(req, res) {
         if(err) throw err;
         else {
               res.render('categories/category', {
-                allPlaces: allPlaces
+                allPlaces: allPlaces,
+                currentUser: res.locals.user
               });
         }
     });

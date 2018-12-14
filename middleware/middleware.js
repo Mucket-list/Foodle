@@ -27,6 +27,27 @@ middleObj.checkPlaceOwnership = function(req, res, next) {
 }
 
 
+// middleObj.checkPlaceOwnership = function(req, res, next) {
+//     if(req.isAuthenticated()) {
+//         User.findById(res.locals.user.id, function(err, currentUser) {
+//             if(err) {
+//                 throw err;
+//             }
+//             else {
+//                 for(var i = 0; i < currentUser.savedPlaces.length; i++) {
+//                     if(currentUser.savedPlaces[i] == req.params.id) {
+//                         res.redirect("/.");
+//                     }
+//                 }
+//                 next();
+//             }
+//         })
+//     } else {
+//         res.redirect("/.");
+//     }
+// }
+
+
 //checks login status
 middleObj.ensureAuthenticated = function(req, res, next){
 	if(req.isAuthenticated()){
