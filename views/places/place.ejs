@@ -117,15 +117,24 @@
           <form method="POST" action="/place/<%= foundPlace._id %>/delete">
             <button class="btn themePink1 text-white">Delete from MyList :(</button>
           </form>
-
-          <p class="text-themePink1 text-24"style="margin-top:30px">Your Rating:</p>
-      		<div class="slidecontainer">
-      			<div id="rating" class="text-themePink1 text-24"></div>
-      			<form id="rater" method="POST" action="/place/<%= foundPlace._id %>/rate">
-      				<input name="rate[rate]" oninput="displayRating(value)" type="range" min="0" max="5" class="slider" id="myRange" style="margin-bottom:20px">
-      				<input type="submit" class="tag-button themePink1 hover-themeRed1 text-white">
-      			</form>
-      		</div>
+          <% var ratedAlready = false; %>
+          <% for(var i = 0; i < allRatings.length; i++){ %>
+            <% if(String(allRatings[i].byUser) == String(currentUser._id)) { %>
+              <% ratedAlready = true; %>
+              <% break; %>
+            <% } %>
+          <% } %>
+          <% if(ratedAlready == false){ %>
+            <div class="text-themePink1 text-24"style="margin-top:30px">Your Rating:
+              <div id="rating" class="text-themePink1 text-24" style="display:inline"></div>
+            </div>
+        		<div class="slidecontainer">
+        			<form id="rater" method="POST" action="/place/<%= foundPlace._id %>/rate">
+        				<input name="rate[rate]" oninput="displayRating(value)" type="range" min="0" max="5" class="slider" id="myRange" style="margin-bottom:20px">
+        				<input type="submit" class="tag-button themePink1 hover-themeRed1 text-white">
+        			</form>
+        		</div>
+          <% } %>
         <% } %>
     <% } %>
 
@@ -134,7 +143,7 @@
 
 
 	<div class="sub-restaurant themeGray1 shadow-themeGray5">
-		</br></br></br></br>
+  </br></br></br></br></br></br>
 		<div class="fluid row">
 			<div class="col-lg-7 display-window text-36 text-bold themePink2">
 				About This <%= foundPlace.type %>

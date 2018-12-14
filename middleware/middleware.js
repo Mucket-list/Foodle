@@ -1,5 +1,6 @@
 var User = require("../models/user");
 var Place = require("../models/place");
+var Rate = require("../models/rate");
 
 //ALL THE MIDDLEWARE GOES HERE
 var middleObj = {};
@@ -27,19 +28,30 @@ middleObj.checkPlaceOwnership = function(req, res, next) {
 }
 
 
-// middleObj.checkPlaceOwnership = function(req, res, next) {
+// middleObj.alreadyRated = function(req, res, next) {
 //     if(req.isAuthenticated()) {
-//         User.findById(res.locals.user.id, function(err, currentUser) {
+//         Rate.findOne({ byUser: res.locals.user.id }, function(err, userRate) {
 //             if(err) {
 //                 throw err;
 //             }
 //             else {
-//                 for(var i = 0; i < currentUser.savedPlaces.length; i++) {
-//                     if(currentUser.savedPlaces[i] == req.params.id) {
-//                         res.redirect("/.");
+//                 console.log(userRate);
+//                 Place.findById(req.params.id, function(err, currentPlace) {
+//                     if(err) {
+//                         throw err;
+//                         res.redirect("back");
+//                     } else {
+//                         for(var i = 0; i < currentPlace.ratings.length; i++) {
+//                           console.log(userRate.id);
+//                           console.log(currentPlace.ratings[i]);
+//                             if(currentPlace.ratings[i] == userRate.id) {
+//
+//                                 res.redirect("/");
+//                             }
+//                         }
+//                         next();
 //                     }
-//                 }
-//                 next();
+//                 })
 //             }
 //         })
 //     } else {

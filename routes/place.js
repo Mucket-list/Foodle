@@ -20,14 +20,27 @@ router.get('/', function(req, res){
 	Place.findById(req.params.id, function(err, foundPlace) {
 		if(err) throw err;
 		else {
-				//var allRating = foundPlace.rating;
-				var avg = 0;
-				// allRating.forEach(function(rate){
-				// 		avg += rate;
-				// });
-				// avg /= allRating.length;
-
-				res.render('places/place', { currentUser: res.locals.user, foundPlace: foundPlace, rateAvg: avg });
+				Rate.find({}, function(err, allRatings) {
+						// console.log(allRatings);
+						if(err) throw err;
+						else {
+								var avg = 0;
+								var placeRatings = foundPlace.ratings;
+								for(var i = 0; i < placeRatings.length; i++) {
+										for(var j = 0; j < allRatings.length; j++) {
+												if(placeRatings[i] == allRatings[j].id) {
+														avg += allRatings[j].rate;
+												}
+										}
+								}
+								avg /= placeRatings.length;
+								res.render('places/place', { currentUser: res.locals.user,
+																						allRatings: allRatings,
+																						foundPlace: foundPlace,
+																						rateAvg: avg
+								});
+						}
+				});
 		}
 	})
 });
