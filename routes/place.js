@@ -3,6 +3,16 @@ var router = express.Router({mergeParams: true});
 var Place = require('../models/place');
 var User = require('../models/user');
 var middleware = require("../middleware/middleware");
+var NodeGeocoder = require("node-geocoder");
+
+var options = {
+		provider: 'google',
+		httpAdapter: 'https',
+		apiKey: process.env.GEOCODER_API_KEY,
+		formatter: null
+};
+
+var geocoder = NodeGeocoder(options);
 
 // Get Homepage
 router.get('/', function(req, res){
