@@ -40,7 +40,7 @@ router.get('/', function(req, res){
 																						allRatings: currentPlaceRatings,
 																						foundPlace: foundPlace,
 																						rateAvg: avg,
-																						googleKey: options.apiKey;
+																						googleKey: process.env.GEOCODER_API_KEY;
 								});
 						}
 				});
