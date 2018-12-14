@@ -16,7 +16,6 @@ router.get('/', function(req, res){
 
 													res.render('index', {
 														currentUser: res.locals.user,
-														placeid: "5c0ee49fb734739ff0d1b212",
 														restaurants: allRestaurants,
 														cafes: allCafes,
 														bars: allBars

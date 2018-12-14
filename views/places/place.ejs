@@ -207,7 +207,6 @@
 
 
 </body>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArRwzil4VN1ZAV17gOMIHPy7osS03Pgts&callback=myMap"></script>
 
 <script>
 
@@ -231,10 +230,10 @@
 	window.onload = Star;
 
 
-	function myMap(){
+	function myMap(gps){
 
 		var mapProp = {
-			center:new google.maps.LatLng(51.508742,-0.120850),
+			center:new google.maps.LatLng(gps),
 			zoom:5
 		};
 
@@ -252,6 +251,7 @@
 </script>
 
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArRwzil4VN1ZAV17gOMIHPy7osS03Pgts&callback=myMap(<%= foundPlace.gps %>)"></script>
 
 
 </html>

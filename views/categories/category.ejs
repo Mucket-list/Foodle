@@ -7,7 +7,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="stylesheets/foodleMainStyleSheet.css"/>
+	<link rel="stylesheet" href="../stylesheets/foodleMainStyleSheet.css"/>
 
 
 
@@ -58,58 +58,58 @@
 	</div>
 
 
+  <% var i = 1; %>
+  <% allPlaces.forEach(function(place) { %>
+  	<div class="profile-restaurant themeGray1">
 
-	<!--For each restaurant, this will exist----------->
-	<div class="profile-restaurant themeGray1">
+  		<div id="bannerCarousel" class="carousel slide" data-ride="carousel" style="width:300px;float:right;object-fit:cover">
+  			<ul class="carousel-indicators">
+  				<li data-target="#bannerCarousel" data-slide-to="0" class="active"></li>
+  				<li data-target="#bannerCarousel" data-slide-to="1"></li>
+  				<li data-target="#bannerCarousel" data-slide-to="2"></li>
+  			</ul>
 
-		<div id="bannerCarousel" class="carousel slide" data-ride="carousel" style="width:300px;float:right;object-fit:cover">
-			<ul class="carousel-indicators">
-				<li data-target="#bannerCarousel" data-slide-to="0" class="active"></li>
-				<li data-target="#bannerCarousel" data-slide-to="1"></li>
-				<li data-target="#bannerCarousel" data-slide-to="2"></li>
-			</ul>
+  			<div class="carousel-inner">
+  				<div class="carousel-item active">
+  					<img src="<%= place.picurl1 %>" alt="photo1">
+  				</div>
+  				<div class="carousel-item">
+  					<img src="<%= place.picurl2 %>" alt="photo2">
+  				</div>
+  				<div class="carousel-item">
+  					<img src="<%= place.picurl3 %>" alt="photo3">
+  				</div>
+  			</div>
 
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img src="images/cest_si_bon.jpg" alt="photo1">
-				</div>
-				<div class="carousel-item">
-					<img src="images/cest_si_bon.jpg" alt="photo2">
-				</div>
-				<div class="carousel-item">
-					<img src="images/cest_si_bon.jpg" alt="photo3">
-				</div>
-			</div>
+  			<a class="carousel-control-prev" href="#bannerCarousel" data-slide="prev">
+  				<span class="carousel-control-prev-icon"></span>
+  			</a>
 
-			<a class="carousel-control-prev" href="#bannerCarousel" data-slide="prev">
-				<span class="carousel-control-prev-icon"></span>
-			</a>
-
-			<a class="carousel-control-next" href="#bannerCarousel" data-slide="next">
-				<span class="carousel-control-next-icon"></span>
-			</a>
-		</div>
-
-
-		<div class="logo-superBig text-themePink1">
-			#1
-		</div>
-		<div class="text-36 text-bold">
-			John's home
-		</div>
-		<div class="text-24">
-			3475 Rue Durocher, Montreal, QC, Canada
-		</div>
-		</br>
-
-		<a href="#" class="tag-button themePink1 hover-themeRed1 text-white">
-			See More
-		</a>
+  			<a class="carousel-control-next" href="#bannerCarousel" data-slide="next">
+  				<span class="carousel-control-next-icon"></span>
+  			</a>
+  		</div>
 
 
-	</div>
+  		<div class="logo-superBig text-themePink1">
+        <%= i %>
+  		</div>
+  		<div class="text-36 text-bold">
+  			<%= place.name %>
+  		</div>
+  		<div class="text-24">
+  			<%= place.location %>
+  		</div>
+  		</br>
+
+  		<a href="/place/<%= place._id %>" class="tag-button themePink1 hover-themeRed1 text-white">
+  			See More
+  		</a>
 
 
+  	</div>
+  <% i++; %>
+  <% }); %>
 
 		<!--Bottom Bar---------------------------------------------------------------------------------------->
 	<div class="bottom-bar-long themeRed5" style="padding:20px">
