@@ -13,21 +13,34 @@ router.get("/",middleware.ensureAuthenticated, function(req, res){
             console.log(err);
         }
         else {
+            var placeInList;
             var mukList = [];
-            var currentSaved = foundUser.savedPlaces;
-            currentSaved.forEach(function(placeid){
-                Place.findById(placeid, function(err, foundPlace) {
-                    if(err) throw err;
-                    else {
-                        mukList.push(foundPlace);
+            Place.find({}, function(err, allPlaces) {
+                if(err) throw err;
+                else {
+                    for(var i = 0; i < foundUser.savedPlaces.length; i++) {
+                        allPlaces.forEach(function(place) {
+                            if(foundUser.savedPlaces[i] == place.id) {
+                                mukList.push(place);
+                            }
+                        });
                     }
-                });
-            });
-            console.log(foundPlace);
 
-            //render show tamplate with that user id
-            //with foundUser as user parameter
-            res.render("profiles/profile", {currentUser: res.locals.user});
+                    //render show tamplate with that user id
+                    //with foundUser as user parameter
+                    res.render("profiles/profile", {currentUser: res.locals.user, favorites: mukList});
+                }
+
+            })
+            // for(var i = 0; i < foundUser.savedPlaces.length; i++){
+            //     // Place.find(foundUser.savedPlaces[i], function(err, foundPlace) {
+            //     //     if(err) throw err;
+            //     //     else {
+            //     //         mukList.save(foundPlace);
+            //     //     }
+            //     // });
+            // }
+
        }
    });
 
