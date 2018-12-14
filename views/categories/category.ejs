@@ -31,10 +31,20 @@
 	</div>
 
 	<div class="top-bar-restaurant themePink1">
-		<a href="/login" onclick="" class="top-bar-content hover-text-themeRed7 text-24 text-white text-unlined">
-			Login
-		</a>
-		<a href="/" onclick="" class="top-bar-home hover-text-themeRed7 text-24 text-white text-unlined">
+    <% if(!currentUser){ %>
+  		<a href="/login" onclick="" class="top-bar-content hover-text-themeRed7 text-24 text-white text-unlined">
+  			Login
+  		</a>
+    <% } else { %>
+      <a href="/profile" class="top-bar-content hover-text-themeRed7 text-24 text-white text-unlined">
+        Signed In As <%= currentUser.firstname %>
+      </a>
+      <a href="/logout" onclick="" class="top-bar-content hover-text-themeRed7 text-24 text-white text-unlined">
+        Log Out
+      </a>
+    <% } %>
+
+    <a href="/" onclick="" class="top-bar-home hover-text-themeRed7 text-24 text-white text-unlined">
 			Foodle
 		</a>
 	</div>
