@@ -49,7 +49,7 @@ router.post("/", middleware.ensureAuthenticated, function(req, res) {
     // setup email data with unicode symbols
     let mailOptions = {
         from: res.locals.user.email, // sender address
-        to: 'foodle307Pro@gmail.com', // list of receivers
+        to: 'sang.m.lee@mail.mcgill.ca', // list of receivers
         subject: 'Node Contact Request', // Subject line
         text: 'You have a new location request', // plain text body
         html: output // html body
