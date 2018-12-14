@@ -232,13 +232,14 @@
 
 	function myMap(){
 
-    // var location = <%= foundPlace.gps %>;
-    var buildingLatlng = new google.maps.LatLng(45.501968, -73.577000);
-    var centerLatlng   = new google.maps.LatLng(45.501968, -73.577000);
+    var location = <%= foundPlace.gps %>;
+
+    var buildingLatlng = new google.maps.LatLng(location);
+    var centerLatlng   = new google.maps.LatLng(location);
 
 		var mapProp = {
 			center:centerLatlng,
-			zoom:5
+			zoom:16
 		};
 
 		var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
