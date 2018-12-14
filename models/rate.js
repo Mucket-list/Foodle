@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-
+// rate Schema
 var rateSchema = new mongoose.Schema({
     rate: Number,
     byUser: {

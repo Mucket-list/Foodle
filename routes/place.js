@@ -26,18 +26,21 @@ router.get('/', function(req, res){
 						else {
 								var avg = 0;
 								var placeRatings = foundPlace.ratings;
+								var currentPlaceRatings = [];
 								for(var i = 0; i < placeRatings.length; i++) {
 										for(var j = 0; j < allRatings.length; j++) {
 												if(placeRatings[i] == allRatings[j].id) {
 														avg += allRatings[j].rate;
+														currentPlaceRatings.push(allRatings[j]);
 												}
 										}
 								}
 								avg /= placeRatings.length;
 								res.render('places/place', { currentUser: res.locals.user,
-																						allRatings: allRatings,
+																						allRatings: currentPlaceRatings,
 																						foundPlace: foundPlace,
-																						rateAvg: avg
+																						rateAvg: avg,
+																						googleKey: options.apiKey;
 								});
 						}
 				});

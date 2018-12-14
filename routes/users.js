@@ -28,14 +28,6 @@ router.post('/register', function (req, res) {
 	var password = req.body.password;
 	var password = req.body.password2;
 
-	// Validation
-	// req.checkBody('name', 'Name is required').notEmpty();
-	// req.checkBody('email', 'Email is required').notEmpty();
-	// req.checkBody('email', 'Email is not valid').isEmail();
-	// req.checkBody('username', 'Username is required').notEmpty();
-	// req.checkBody('password', 'Password is required').notEmpty();
-	// req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
-
 	var errors = req.validationErrors();
 
 	if (errors) {
@@ -48,10 +40,13 @@ router.post('/register', function (req, res) {
 			User.findOne({ email: {
 				"$regex": "^" + email + "\\b", "$options": "i"
 		}}, function (err, mail) {
+				if(err) {
+						req.flash("error", "Unknown error occured");
+						res.redirect("back");
+				}
 				if (mail) {
-					res.render('register', {
-						mail: mail
-					});
+					req.flash("error_msg", "Current email already exists, try with different one");
+					res.redirect("back");
 				}
 				else {
 					var newUser = new User({
@@ -102,7 +97,7 @@ passport.deserializeUser(function (id, done) {
 router.post('/login',
 	passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login', failureFlash: true }),
 	function (req, res) {
-		res.redirect('/.');
+		res.redirect('/');
 	});
 
 

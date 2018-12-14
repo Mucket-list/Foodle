@@ -1,6 +1,5 @@
 var User = require("../models/user");
 var Place = require("../models/place");
-var Rate = require("../models/rate");
 
 //ALL THE MIDDLEWARE GOES HERE
 var middleObj = {};
