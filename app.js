@@ -14,7 +14,7 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
 //mongoose.connect('mongodb://localhost/loginapp');
-mongoose.connect('mongodb://mucketlist:mucketlist2gg***@ds247678.mlab.com:47678/foodle');
+mongoose.connect('mongodb://mucketlist:' + process.env.MONGODB_PW + '@ds247678.mlab.com:47678/foodle');
 var db = mongoose.connection;
 
 var routes = require('./routes/index');
@@ -89,13 +89,13 @@ app.use('/place/:id', places);
 app.use('/category', categories);
 
 // Set Port
-// app.set('port', (process.env.PORT || 3000));
-//
-// app.listen(app.get('port'), function(){
-// 	console.log('Server started on port '+app.get('port'));
-// });
+app.set('port', (process.env.PORT || 3000));
 
-
-app.listen(process.env.PORT, process.env.IP, function(){
-    console.log("Foodle Server Started...");
+app.listen(app.get('port'), function(){
+	console.log('Server started on port '+app.get('port'));
 });
+
+
+// app.listen(process.env.PORT, process.env.IP, function(){
+//     console.log("Foodle Server Started...");
+// });
